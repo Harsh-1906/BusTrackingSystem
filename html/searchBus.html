@@ -1,0 +1,101 @@
+ <html>
+ <head>
+  <link rel="shortcut icon" href="favicon.ico" />
+ <title>
+        
+     Bus Tracking System</title>
+ <link rel="stylesheet" href="bootstrap-3.3.7\dist\css\bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap-3.3.7\dist\css\bootstrap.css">
+ 
+   <script src="bootstrap-3.3.7/js/tests/vendor/jquery.min.js"></script>
+        <script src="bootstrap-3.3.7/js/collapse.js"></script>
+        <script src="bootstrap-3.3.7/js/transition.js"></script>
+        <script src="bootstrap-3.3.7/js/dropdown.js"></script>
+         <script src="bootstrap-3.3.7/js/tab.js"></script>
+         <script src="bootstrap-3.3.7/js/modal.js"></script>
+      
+
+ </head>
+ <body>
+      <nav class="nav navbar-inverse navbar-static-top">
+         
+            <div class="navbar-header" style="margin-left:2em">
+               <h1 style="color: lightblue">Bus Tracking System</h1>
+            </div>
+             
+        <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target="#abc"> 
+                <span class="sr-only">Button</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+            </button>
+
+        <div class="collapse navbar-collapse pull-right" id="abc" style="margin-top:5%; margin-right:2em; color:white;">
+            <ul class="nav navbar-nav">
+               <li class="active"><a href="index.html"> <b>Home</b></a></li>
+                   <li class="active"><a href="searchBus.html"><b>Search Bus</b></a></li>
+                 <li class="active"><a href="trackBus.html"><b>Track Bus</b></a></li>
+               
+            </ul>
+       </div>    
+        </nav>
+        <div class="container">
+            <div class="jumbotron">
+               <form action="$_SERVER["PHP_SELF"]" method="POST">
+                <h3> Search Your Bus Now</h3>
+                <table>
+                    <tr>
+                        
+                        <td><h4>Enter Source Location</h4></td>
+                        <td><input type="text" name="src" /></td>                        
+                    </tr>
+                    <tr>
+                        <td><h4>Enter Destination Location </h4></td>
+                        <td><input type="text" name="dest" /></td>                        
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Search" class="btn btn-primary">
+                        </td>
+                    </tr>
+                   
+                </table>
+               </form>
+            </div>
+               
+        </div>
+        <p id='content'></p>
+        <div class="nav navbar-inverse" >
+    <div class="rows"  style="color:white; margin-left:2em;">
+        <div class="cols-xs-4" style="padding:1em;  float:left;">
+            About Us
+            <br/>   <br/>
+            Contact Us 
+        <br/>        
+        </div>
+        <div class="cols-xs-4" style="padding:1em;  float:right;">
+            About Us
+            <br/>   <br/>
+            Contact Us 
+        <br/>        
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="rows"  style="color:white; margin-left:2em;">
+        <div class="cols-xs-4" style="padding:1em;">
+         <center>
+             This website has not yuet been approved by GSRTC.
+         </center>  
+        <br/>        
+        </div>
+       
+    </div>
+</div>
+
+
+
+ </body>
+ 
+
+ </html>

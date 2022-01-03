@@ -1,0 +1,164 @@
+ <html>
+ <head>
+      <style>
+      #map {
+        height: 300px;
+        width: 100%;
+       }
+    </style>
+  <link rel="shortcut icon" href="favicon.ico" />
+ <title>
+        
+     Bus Tracking System</title>
+ <link rel="stylesheet" href="bootstrap-3.3.7\dist\css\bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap-3.3.7\dist\css\bootstrap.css">
+ 
+   <script src="bootstrap-3.3.7/js/tests/vendor/jquery.min.js"></script>
+        <script src="bootstrap-3.3.7/js/collapse.js"></script>
+        <script src="bootstrap-3.3.7/js/transition.js"></script>
+        <script src="bootstrap-3.3.7/js/dropdown.js"></script>
+         <script src="bootstrap-3.3.7/js/tab.js"></script>
+         <script src="bootstrap-3.3.7/js/modal.js"></script>
+         
+
+ </head>
+ <body>
+      <nav class="nav navbar-inverse navbar-static-top">
+         
+            <div class="navbar-header" style="margin-left:2em">
+               <h1 style="color: lightblue">Bus Tracking System</h1>
+            </div>
+             
+        <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target="#abc"> 
+                <span class="sr-only">Button</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+            </button>
+
+        <div class="collapse navbar-collapse pull-right" id="abc" style="margin-top:5%; margin-right:2em; color:white;">
+            <ul class="nav navbar-nav">
+               <li class="active"><a href="index.html"> <b>Home</b></a></li>
+                   <li class="active"><a href="searchBus.html"><b>Search Bus</b></a></li>
+                 <li class="active"><a href="trackBus.html"><b>Track Bus</b></a></li>
+               
+            </ul>
+       </div>    
+        </nav>
+        <div class="container" style="height:700px">
+            <div class="jumbotron">
+               
+                <h3> Search Your Bus Now</h3>
+                <table>
+                    <tr>
+                        <td><h4>Enter Bus Number</h4></td>
+                        <td><input type="text" name="srcLocation" /></td>                        
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="2">
+                            <input type="button" value="Track Location" onclick="initMap()" class="btn btn-primary">
+                        </td>
+                    </tr>
+                </table>
+                
+                </div>
+                 <p id="map"></p>
+        </div>
+       
+         <div class="nav navbar-inverse" >
+    <div class="rows"  style="color:white; margin-left:2em;">
+        <div class="cols-xs-4" style="padding:1em;  float:left;">
+            About Us
+            <br/>   <br/>
+            Contact Us 
+        <br/>        
+        </div>
+        <div class="cols-xs-4" style="padding:1em;  float:right;">
+            About Us
+            <br/>   <br/>
+            Contact Us 
+        <br/>        
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="rows"  style="color:white; margin-left:2em;">
+        <div class="cols-xs-4" style="padding:1em;">
+         <center>
+             This website has not yuet been approved by GSRTC.
+         </center>  
+        <br/>        
+        </div>
+       
+    </div>
+</div>
+
+ </body>         
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script> 
+    <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC9Pleefa58BdoYmLoI7XIkKt0uar11MVI",
+    authDomain: "fir-bf9db.firebaseapp.com",
+    databaseURL: "https://gsrtc-bus-tracking.firebaseio.com/",
+    projectId: "fir-bf9db",
+    storageBucket: "fir-bf9db.appspot.com",
+    messagingSenderId: "699843357704"
+  };
+  firebase.initializeApp(config);
+</script>
+ <script>
+ 
+      function initMap() {
+         var obj = new firebase.database().ref().child("Bus_details").child("100").child("loclat");
+         var obj1 = new firebase.database().ref().child("Bus_details").child("100").child("loclong");
+        
+         
+         
+          
+          var map = new google.maps.Map(document.getElementById('map'), {
+            
+          zoom: 8,
+          center: {lat: 75, lng: 73},
+             mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+      
+         var marker = new google.maps.Marker({
+          position: {lat: 75, lng: 73},
+          map: map,          
+          title: "Bus 100"
+        });
+   
+      obj.on('value', function(snap){  
+                      
+           n=snap.val();
+          
+          });
+        
+           obj1.on('value', function(snap1){  
+                          
+           m=snap1.val();  
+            var panPoint = new google.maps.LatLng(n,m);
+            marker = new google.maps.Marker({
+            position: {lat : n, lng: m},
+            map: map,
+            title:"Bus No 100"
+        });
+       //alert('hello');
+        
+        map.panTo(panPoint);
+        
+       
+          });
+      }
+
+
+       
+
+
+      
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj3xmuNB_wiWpKvoM85t-SgsdMpwPYmw8&callback=initMap">
+    </script>
+ </html>
